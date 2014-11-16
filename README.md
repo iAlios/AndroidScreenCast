@@ -2,7 +2,7 @@ AndroidScreenCast
 =================
 
 this project is changed from https://code.google.com/p/androidscreencast
-it's on the lisence of Apache Licence 2.0, so you can change it by your ideals.
+
 and the difference is:
 
   1. no push jar into your phone
