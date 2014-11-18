@@ -49,6 +49,7 @@ public class JFrameMain extends JFrame {
 	private JButton jbOpenUrl = new JButton("Open Url");
 	private JButton jbExplorer = new JButton("Explore");
 	private JButton jbScreenCast = new JButton("ScreenCast");
+	private JButton jbKbPower = new JButton("Power");
 	private JButton jbKbHome = new JButton("Home");
 	private JButton jbKbMenu = new JButton("Menu");
 	private JButton jbKbBack = new JButton("Back");
@@ -95,25 +96,29 @@ public class JFrameMain extends JFrame {
 		jbPaint.setFocusable(false);
 
 		jbKbHome.setFocusable(false);
+		jbKbPower.setFocusable(false);
 		jbKbMenu.setFocusable(false);
 		jbKbBack.setFocusable(false);
 		jbKbSearch.setFocusable(false);
 		jbKbPhoneOn.setFocusable(false);
 		jbKbPhoneOff.setFocusable(false);
 
-		jbKbHome.addActionListener(new KbActionListener(
+		jbKbPower.addActionListener(new KbClickActionListener(
+				ConstEvtKey.KEYCODE_POWER));
+		jbKbHome.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_HOME));
-		jbKbMenu.addActionListener(new KbActionListener(
+		jbKbMenu.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_MENU));
-		jbKbBack.addActionListener(new KbActionListener(
+		jbKbBack.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_BACK));
-		jbKbSearch.addActionListener(new KbActionListener(
+		jbKbSearch.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_SEARCH));
-		jbKbPhoneOn.addActionListener(new KbActionListener(
+		jbKbPhoneOn.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_CALL));
-		jbKbPhoneOff.addActionListener(new KbActionListener(
+		jbKbPhoneOff.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_ENDCALL));
 
+		jToolBarHardkeys.add(jbKbPower);
 		jToolBarHardkeys.add(jbKbHome);
 		jToolBarHardkeys.add(jbKbMenu);
 		jToolBarHardkeys.add(jbKbBack);
@@ -337,6 +342,22 @@ public class JFrameMain extends JFrame {
 				return;
 			injector.injectKeycode(ConstEvtKey.ACTION_DOWN, key);
 			injector.injectKeycode(ConstEvtKey.ACTION_UP, key);
+		}
+
+	}
+
+	public class KbClickActionListener implements ActionListener {
+
+		int key;
+
+		public KbClickActionListener(int key) {
+			this.key = key;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			if (injector == null)
+				return;
+			injector.injectKeycode(ConstEvtKey.ACTION_DOWN, key);
 		}
 
 	}
