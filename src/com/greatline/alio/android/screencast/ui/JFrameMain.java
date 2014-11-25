@@ -57,6 +57,11 @@ public class JFrameMain extends JFrame {
 	private JButton jbKbPhoneOn = new JButton("Call");
 	private JButton jbKbPhoneOff = new JButton("End call");
 	private JButton jbPaint = new JButton("Paint");
+	
+
+	private JButton jbKbLeft = new JButton("LSwipe");
+	private JButton jbKbRight = new JButton("RSwipe");
+	
 	private JPaintPanel jPaintPanel;
 
 	private static final String MAINPANEL = "Main Panel";
@@ -103,6 +108,25 @@ public class JFrameMain extends JFrame {
 		jbKbPhoneOn.setFocusable(false);
 		jbKbPhoneOff.setFocusable(false);
 
+		jbKbLeft.setFocusable(false);
+		jbKbRight.setFocusable(false);
+
+		jbKbLeft.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				injector.injectSwap(10, 100, 400, 100);
+			}
+
+		});
+		jbKbRight.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				injector.injectSwap(400, 100, 10, 100);
+			}
+
+		});
 		jbKbPower.addActionListener(new KbClickActionListener(
 				ConstEvtKey.KEYCODE_POWER));
 		jbKbHome.addActionListener(new KbClickActionListener(
@@ -125,6 +149,8 @@ public class JFrameMain extends JFrame {
 		jToolBarHardkeys.add(jbKbSearch);
 		jToolBarHardkeys.add(jbKbPhoneOn);
 		jToolBarHardkeys.add(jbKbPhoneOff);
+		jToolBarHardkeys.add(jbKbLeft);
+		jToolBarHardkeys.add(jbKbRight);
 
 		setIconImage(Toolkit
 				.getDefaultToolkit()
