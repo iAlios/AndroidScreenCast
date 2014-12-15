@@ -57,11 +57,13 @@ public class JFrameMain extends JFrame {
 	private JButton jbKbPhoneOn = new JButton("Call");
 	private JButton jbKbPhoneOff = new JButton("End call");
 	private JButton jbPaint = new JButton("Paint");
-	
 
 	private JButton jbKbLeft = new JButton("LSwipe");
 	private JButton jbKbRight = new JButton("RSwipe");
-	
+
+	private JButton jbKbUp = new JButton("USwipe");
+	private JButton jbKbDown = new JButton("DSwipe");
+
 	private JPaintPanel jPaintPanel;
 
 	private static final String MAINPANEL = "Main Panel";
@@ -111,6 +113,9 @@ public class JFrameMain extends JFrame {
 		jbKbLeft.setFocusable(false);
 		jbKbRight.setFocusable(false);
 
+		jbKbUp.setFocusable(false);
+		jbKbDown.setFocusable(false);
+
 		jbKbLeft.addActionListener(new ActionListener() {
 
 			@Override
@@ -124,6 +129,24 @@ public class JFrameMain extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				injector.injectSwap(400, 100, 10, 100);
+			}
+
+		});
+		jbKbUp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				injector.injectSwap(100, jPanelScreen.getHeight() / 3, 100,
+						jPanelScreen.getHeight() * 2 / 3);
+			}
+
+		});
+		jbKbDown.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				injector.injectSwap(100, jPanelScreen.getHeight() * 2 / 3, 100,
+						jPanelScreen.getHeight() / 3);
 			}
 
 		});
@@ -151,6 +174,8 @@ public class JFrameMain extends JFrame {
 		jToolBarHardkeys.add(jbKbPhoneOff);
 		jToolBarHardkeys.add(jbKbLeft);
 		jToolBarHardkeys.add(jbKbRight);
+		jToolBarHardkeys.add(jbKbUp);
+		jToolBarHardkeys.add(jbKbDown);
 
 		setIconImage(Toolkit
 				.getDefaultToolkit()
