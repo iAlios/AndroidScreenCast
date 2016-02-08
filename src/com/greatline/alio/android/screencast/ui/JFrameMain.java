@@ -63,6 +63,8 @@ public class JFrameMain extends JFrame {
 
 	private JButton jbKbUp = new JButton("USwipe");
 	private JButton jbKbDown = new JButton("DSwipe");
+	
+	private JButton jbKbRotate = new JButton("Rotate");
 
 	private JPaintPanel jPaintPanel;
 
@@ -115,18 +117,25 @@ public class JFrameMain extends JFrame {
 
 		jbKbUp.setFocusable(false);
 		jbKbDown.setFocusable(false);
+		jbKbRotate.setFocusable(false);
 
 		jbKbLeft.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				injector.injectSwap(10, 100, 400, 100);
 			}
 
 		});
+		
+		jbKbRotate.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				injector.screencapture.toogleOrientation();
+			}
+			
+		});
 		jbKbRight.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				injector.injectSwap(400, 100, 10, 100);
 			}
@@ -134,7 +143,6 @@ public class JFrameMain extends JFrame {
 		});
 		jbKbUp.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				injector.injectSwap(100, jPanelScreen.getHeight() / 3, 100,
 						jPanelScreen.getHeight() * 2 / 3);
@@ -143,7 +151,6 @@ public class JFrameMain extends JFrame {
 		});
 		jbKbDown.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				injector.injectSwap(100, jPanelScreen.getHeight() * 2 / 3, 100,
 						jPanelScreen.getHeight() / 3);
@@ -176,6 +183,7 @@ public class JFrameMain extends JFrame {
 		jToolBarHardkeys.add(jbKbRight);
 		jToolBarHardkeys.add(jbKbUp);
 		jToolBarHardkeys.add(jbKbDown);
+		jToolBarHardkeys.add(jbKbRotate);
 
 		setIconImage(Toolkit
 				.getDefaultToolkit()
