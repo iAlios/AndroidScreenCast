@@ -87,10 +87,10 @@ public class JFrameMain extends JFrame {
 							injector.injectKeycode(ConstEvtKey.ACTION_DOWN,
 									code);
 						}
-						if (e.getID() == KeyEvent.KEY_RELEASED) {
-							int code = KeyCodeUtil.getKeyCode(e);
-							injector.injectKeycode(ConstEvtKey.ACTION_UP, code);
-						}
+						//if (e.getID() == KeyEvent.KEY_RELEASED) {
+						//	int code = KeyCodeUtil.getKeyCode(e);
+						//	injector.injectKeycode(ConstEvtKey.ACTION_UP, code);
+						//}
 						return false;
 					}
 				});
